@@ -1,17 +1,24 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:ordersystem/screens/homepage.dart';
 
 void main() {
-  runApp(MaterialApp(
-   home: Scaffold(
-     appBar: AppBar(
-       title: const Text('客戶訂單系統'),
-       centerTitle: false,
-       backgroundColor: Colors.green,
-       titleSpacing: 30,
-     ),
-   ),
-  ));
+  FlutterError.onError= (FlutterErrorDetails details) {
+    exit(1);
+  };
+  runApp(const MyApp());
 }
 
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Homepage(),
+    );
+  }
+}
 
