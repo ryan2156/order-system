@@ -1,4 +1,3 @@
-import 'package:clock/clock.dart';
 import 'package:flutter/material.dart';
 import 'package:ordersystem/screens/components/clock.dart';
 
@@ -26,7 +25,8 @@ class _HomePageState extends State<Homepage>{
         titleSpacing: 30,
         toolbarHeight: 60,
       ),
-      body: const ThisTime(),
+
+      body: ThisTime(),
     );
   }
 }
