@@ -1,17 +1,15 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-class ThisTime extends StatefulWidget {
-  const ThisTime({Key? key}) : super(key: key);
+class Clock extends StatefulWidget {
+  const Clock({Key? key}) : super(key: key);
 
   @override
-  State<ThisTime> createState() => _TimeNow();
+  State<Clock> createState() => _TimeNow();
 
 }
 
-class _TimeNow extends State<ThisTime> {
+class _TimeNow extends State<Clock> {
 
   late Timer _timer;
   DateTime dateTime = DateTime.now();
@@ -21,7 +19,7 @@ class _TimeNow extends State<ThisTime> {
   void initState(){
     super.initState();
     dateTime = DateTime.now();
-    _timer = Timer.periodic(Duration (seconds: 1), setTime);
+    _timer = Timer.periodic(const Duration (seconds: 1), setTime);
   }
 
   void setTime(Timer timer) {
@@ -30,6 +28,7 @@ class _TimeNow extends State<ThisTime> {
     });
   }
 
+  @override
   void dispose() {
     _timer.cancel();
     super.dispose();
@@ -39,22 +38,21 @@ class _TimeNow extends State<ThisTime> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Center(
-        child: Text(
-          '${dateTime.hour}:${dateTime.minute.toString().padLeft(2,'0')}:${dateTime.second.toString().padLeft(2,'0')}',
-          style: const TextStyle(
-            fontFamily: 'OpenSans',
-            fontWeight: FontWeight.w300,
-            color: Colors.black54,
-            decoration: TextDecoration.none,
-            fontSize: 60,
-          ),
-          textAlign: TextAlign.center,
+    return Container(
+      margin: const EdgeInsets.fromLTRB(0, 0, 0, 60),
+      child: Text(
+        '${dateTime.hour}:${dateTime.minute.toString()}',
+        style: const TextStyle(
+          fontFamily: 'OpenSans',
+          fontWeight: FontWeight.w200,
+          color: Colors.black54,
+          decoration: TextDecoration.none,
+          fontSize: 80,
         ),
-      ),
+      )
     );
+
+
   }
 }
 

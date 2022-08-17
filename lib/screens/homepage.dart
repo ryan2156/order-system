@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:ordersystem/screens/components/clock.dart';
+import 'package:ordersystem/screens/orderpage.dart';
+
 
 class Homepage extends StatefulWidget{
   const Homepage({Key? key}) : super(key: key);
@@ -26,7 +29,23 @@ class _HomePageState extends State<Homepage>{
         toolbarHeight: 60,
       ),
 
-      body: ThisTime(),
+     body: Center(
+       child: Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+         children: [
+           Clock(),
+           RaisedButton(
+             onPressed: () { 
+               Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const OrderPage())
+               );
+             },
+             color: Colors.green,
+             child: Text('開始'),
+           ),
+         ],
+       ),
+     )
     );
   }
 }
