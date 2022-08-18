@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ordersystem/screens/components/clock.dart';
 import 'package:ordersystem/screens/orderpage.dart';
+import 'package:ordersystem/screens/components/appbar.dart';
 
 
 class Homepage extends StatefulWidget{
@@ -16,32 +17,31 @@ class _HomePageState extends State<Homepage>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          '客戶訂單系統',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        centerTitle: false,
-        backgroundColor: Colors.green,
-        titleSpacing: 30,
-        toolbarHeight: 60,
-      ),
 
-     body: Center(
+      appBar: const TopBar(titleName: 'abc',),
+
+      body: Center(
        child: Column(
          mainAxisAlignment: MainAxisAlignment.center,
          children: [
-           Clock(),
-           RaisedButton(
+           const Clock(),
+           ElevatedButton(
              onPressed: () { 
                Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const OrderPage())
                );
              },
-             color: Colors.green,
-             child: Text('開始'),
+             style: ButtonStyle(
+               backgroundColor: MaterialStateProperty.all(Colors.green),
+             ),
+             child: const Text(
+               '開始',
+               style: TextStyle(
+                 fontSize: 30,
+                 color: Colors.white,
+
+               ),
+             ),
            ),
          ],
        ),

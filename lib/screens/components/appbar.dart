@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class appBar extends StatelessWidget {
-  const appBar({Key? key}) : super(key: key);
+class TopBar extends StatelessWidget with PreferredSizeWidget {
+  final String titleName;
+  const TopBar({Key? key, required this.titleName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
-        '客戶訂單系統',
-        style: TextStyle(
+      title: Text(
+        titleName,
+        style: const TextStyle(
           fontSize: 30,
         ),
       ),
@@ -18,5 +19,8 @@ class appBar extends StatelessWidget {
       toolbarHeight: 60,
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
 }
